@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.1.0
+## v 0.1.1
 ## By @Darklg
 ## License MIT
 ###################################
@@ -31,11 +31,11 @@ DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
 ## ADD YOUR TASKS HERE
 ###################################
 
-# Set maintenance mode
-. "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/set-maintenance.sh";
-
 # Check if new commits are available
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/git-check.sh";
+
+# Set maintenance mode
+. "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/set-maintenance.sh";
 
 # Pull from origin
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/git-pull.sh";
