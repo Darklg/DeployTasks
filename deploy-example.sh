@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.1.1
+## v 0.1.2
 ## By @Darklg
 ## License MIT
 ###################################
@@ -22,7 +22,7 @@ DEPLOYTASKS__MAINTENANCE_FLAG_NAME='maintenance.flag';
 ## INIT BASE VARS
 ###################################
 
-DEPLOYTASKS__BASE_DIR="$(pwd $(cd $(dirname "${BASH_SOURCE[0]}" )))";
+DEPLOYTASKS__BASE_DIR="$( dirname "${BASH_SOURCE[0]}" )/";
 DEPLOYTASKS__DEPLOY_DIR="${DEPLOYTASKS__BASE_DIR}/${DEPLOYTASKS__DEPLOY_RELATIVE_DIR}";
 DEPLOYTASKS__PROJECT_DIR="${DEPLOYTASKS__BASE_DIR}/${DEPLOYTASKS__DEPLOY_RELATIVE_PROJECT_DIR}";
 DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
