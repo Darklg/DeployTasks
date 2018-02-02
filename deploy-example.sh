@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.2.0
+## v 0.3.0
 ## By @Darklg
 ## License MIT
 ###################################
@@ -39,6 +39,9 @@ DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
 
 # Pull from origin
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/git-pull.sh";
+
+# Empty WordPress cache
+# php "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/wordpress-cache.php";
 
 # Set maintenance mode
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/unset-maintenance.sh";
