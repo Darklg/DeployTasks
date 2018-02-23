@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.3.0
+## v 0.3.1
 ## By @Darklg
 ## License MIT
 ###################################
@@ -42,6 +42,9 @@ DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
 
 # Empty WordPress cache
 # php "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/wordpress-cache.php";
+
+# Flush Redis Cache
+# . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/flush-redis.sh";
 
 # Set maintenance mode
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/unset-maintenance.sh";
