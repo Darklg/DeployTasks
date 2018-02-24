@@ -22,6 +22,7 @@ if [ -z "${DEPLOYTASKS__SLACKMSG__CHANNEL+x}" ]; then
 fi;
 if [ -z "${DEPLOYTASKS__SLACKMSG__HOOKURL+x}" ]; then
     echo '- ERROR : NO HOOK URL AVAILABLE!';
+    rm "${DEPLOYTASKS__CONTROL_FILE}";
     exit 0;
 fi;
 

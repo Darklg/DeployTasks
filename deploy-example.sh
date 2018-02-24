@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.3.1
+## v 0.4.0
 ## By @Darklg
 ## License MIT
 ###################################
@@ -22,14 +22,22 @@ DEPLOYTASKS__MAINTENANCE_FLAG_NAME='maintenance.flag';
 ## INIT BASE VARS
 ###################################
 
-DEPLOYTASKS__BASE_DIR="$( dirname "${BASH_SOURCE[0]}" )/";
+DEPLOYTASKS__BASE_DIR="$( cd $(dirname "${BASH_SOURCE[0]}") && pwd )/";
 DEPLOYTASKS__DEPLOY_DIR="${DEPLOYTASKS__BASE_DIR}/${DEPLOYTASKS__DEPLOY_RELATIVE_DIR}";
 DEPLOYTASKS__PROJECT_DIR="${DEPLOYTASKS__BASE_DIR}/${DEPLOYTASKS__DEPLOY_RELATIVE_PROJECT_DIR}";
 DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
+DEPLOYTASKS__CONTROL_FILE="${DEPLOYTASKS__BASE_DIR}deploy-running.txt";
 
 ###################################
 ## ADD YOUR TASKS HERE
 ###################################
+
+# Avoid double launch
+if [ -f "${DEPLOYTASKS__CONTROL_FILE}" ]; then
+    echo '- A deploy is already running.';
+    return 0;
+fi;
+touch "${DEPLOYTASKS__CONTROL_FILE}";
 
 # Check if new commits are available
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/git-check.sh";
@@ -48,3 +56,6 @@ DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
 
 # Set maintenance mode
 . "${DEPLOYTASKS__DEPLOY_DIR}/shell-tasks/unset-maintenance.sh";
+
+# Allow new deploy
+rm "${DEPLOYTASKS__CONTROL_FILE}";
