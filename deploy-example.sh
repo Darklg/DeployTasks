@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.4.0
+## v 0.4.1
 ## By @Darklg
 ## License MIT
 ###################################
@@ -25,7 +25,6 @@ DEPLOYTASKS__MAINTENANCE_FLAG_NAME='maintenance.flag';
 DEPLOYTASKS__BASE_DIR="$( cd $(dirname "${BASH_SOURCE[0]}") && pwd )/";
 DEPLOYTASKS__DEPLOY_DIR="${DEPLOYTASKS__BASE_DIR}/${DEPLOYTASKS__DEPLOY_RELATIVE_DIR}";
 DEPLOYTASKS__PROJECT_DIR="${DEPLOYTASKS__BASE_DIR}/${DEPLOYTASKS__DEPLOY_RELATIVE_PROJECT_DIR}";
-DEPLOYTASKS__CURRENT_BRANCH=$(git branch | grep \* | cut -d ' ' -f2);
 DEPLOYTASKS__CONTROL_FILE="${DEPLOYTASKS__BASE_DIR}deploy-running.txt";
 
 ###################################
