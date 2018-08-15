@@ -1,6 +1,6 @@
 <?php
 
-include dirname( __FILE__ ) . '/inc/wordpress/bootstrap.php';
+include dirname(__FILE__) . '/inc/wordpress/bootstrap.php';
 
 /* ----------------------------------------------------------
   Flush rules
@@ -15,6 +15,15 @@ echo "- Rewrite rules flushed.\n";
 
 wp_cache_flush();
 echo "- Object Cache flushed.\n";
+
+/* ----------------------------------------------------------
+  Empty Opcode cache
+---------------------------------------------------------- */
+
+if (function_exists('opcache_reset')) {
+    opcache_reset();
+    echo "- Opcode Cache flushed.\n";
+}
 
 /* ----------------------------------------------------------
   Empty W3TC
