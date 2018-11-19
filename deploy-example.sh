@@ -2,7 +2,7 @@
 
 ###################################
 ## DeployTasks
-## v 0.5.1
+## v 0.5.2
 ## By @Darklg
 ## License MIT
 ###################################
@@ -31,6 +31,9 @@ DEPLOYTASKS__CONTROL_FILE="${DEPLOYTASKS__BASE_DIR}deploy-running.txt";
 ## ADD YOUR TASKS HERE
 ###################################
 
+# Counter
+DEPLOYTASKS__DEPLOYTASKS__START_TIME=$SECONDS;
+
 # Avoid double launch
 if [ -f "${DEPLOYTASKS__CONTROL_FILE}" ]; then
     echo '- A deploy is already running.';
@@ -58,3 +61,7 @@ touch "${DEPLOYTASKS__CONTROL_FILE}";
 
 # Allow new deploy
 rm "${DEPLOYTASKS__CONTROL_FILE}";
+
+# Deploy duration
+DEPLOYTASKS__ELAPSED_TIME=$(($SECONDS - $DEPLOYTASKS__START_TIME))
+echo "Deploy took ${DEPLOYTASKS__ELAPSED_TIME}sec.";
